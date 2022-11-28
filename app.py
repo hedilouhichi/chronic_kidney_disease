@@ -1,6 +1,5 @@
 from flask import Flask,request,jsonify
 import numpy as np
-import pandas as pd 
 import pickle
 import sklearn
 app=Flask(__name__)
@@ -38,11 +37,9 @@ def predict():
     appet=request.form.get('appet')
     pe=request.form.get('pe')
     ane=request.form.get('ane')
+    input_query = np.array([[ age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]])
+    prediction=model.predict(input_query)[0]
 
-    prediction=model.predict(pd.DataFrame(columns=[
-      'age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wc','rc','htn','dm','cad','appet','pe','ane'],
-        data=np.array([
-        age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]).reshape(1,24)))
     print(prediction)
 
     return jsonify({'placement': str(prediction)})
