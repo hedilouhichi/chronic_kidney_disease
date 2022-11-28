@@ -11,7 +11,7 @@ cors=CORS(app)
 @app.route('/',methods=['GET','POST'])
 def index():
     return "Hello world"
-model=pickle.load(open('RFC.pkl','rb'))
+#model=pickle.load(open('RFC.pkl','rb'))
 
 @app.route('/predict',methods=['POST','GET'])
 @cross_origin()
@@ -41,13 +41,13 @@ def predict():
     pe=request.form.get('pe')
     ane=request.form.get('ane')
 
-    prediction=model.predict(pd.DataFrame(columns=[
-        'age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wc','rc','htn','dm','cad','appet','pe','ane'],
-        data=np.array([
-        age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]).reshape(1,24)))
-    print(prediction)
+ #   prediction=model.predict(pd.DataFrame(columns=[
+  ""      'age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wc','rc','htn','dm','cad','appet','pe','ane'],
+   #     data=np.array([
+    #    age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]).reshape(1,24)))
+    #print(prediction)
 
-    return jsonify({'placement': str(prediction)})
+    #return jsonify({'placement': str(prediction)})
 
 
 
