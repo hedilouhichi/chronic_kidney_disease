@@ -2,7 +2,7 @@ from flask import Flask,request,jsonify
 
 import pickle
 import numpy as np
-import sklearn
+import venv.Lib.sklearn
 app=Flask(__name__)
 
 model=pickle.load(open('RFC.pkl','rb'))
