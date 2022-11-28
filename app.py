@@ -1,11 +1,8 @@
-from flask import Flask,render_template,request,redirect,jsonify
-from flask_cors import CORS,cross_origin
-import pickle
-import pandas as pd
+from flask import Flask,request,jsonify
 import numpy as np
+import pickle
 
 app=Flask(__name__)
-cors=CORS(app)
 
 
 @app.route('/',methods=['GET','POST'])
