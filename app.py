@@ -1,13 +1,15 @@
 from flask import Flask,request,jsonify
 import numpy as np
+import pandas as pd 
 import pickle
-
+import sklearn
 app=Flask(__name__)
 
 
 @app.route('/')
 def index():
     return "Hello world"
+
 model=pickle.load(open('RFC.pkl','rb'))
 
 @app.route('/predict',methods=['POST'])
