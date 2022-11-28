@@ -9,11 +9,11 @@ cors=CORS(app)
 
 model=pickle.load(open('RFC.pkl','rb'))
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def index():
     return "Hello world"
 
-@app.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST'])
 @cross_origin()
 def predict():
     age=request.form.get('age')
