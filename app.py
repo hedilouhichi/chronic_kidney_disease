@@ -13,7 +13,7 @@ def index():
     return "Hello world"
 
 
-model = pickle.load(open('KNN_model.pkl', 'rb'))
+model = pickle.load(open('RFC.pkl', 'rb'))
 
 
 @app.route('/predict', methods=['POST', 'GET'])
