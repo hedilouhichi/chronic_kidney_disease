@@ -1,11 +1,9 @@
-from flask import Flask,render_template,request,redirect,jsonify
-from flask_cors import CORS,cross_origin
+from flask import Flask,request,jsonify
+
 import pickle
-import pandas as pd
 import numpy as np
 
 app=Flask(__name__)
-cors=CORS(app)
 
 model=pickle.load(open('RFC.pkl','rb'))
 
@@ -14,7 +12,6 @@ def index():
     return "Hello world"
 
 @app.route('/predict',methods=['POST'])
-@cross_origin()
 def predict():
     age=request.form.get('age')
     bp=request.form.get('bp')
@@ -40,11 +37,10 @@ def predict():
     appet=request.form.get('appet')
     pe=request.form.get('pe')
     ane=request.form.get('ane')
+    
+    input_query = np.array([[age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]])
 
-    prediction=model.predict(pd.DataFrame(columns=[
-        'age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wc','rc','htn','dm','cad','appet','pe','ane'],
-        data=np.array([
-        age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sd,pot,hemo,pcv,wc,rc,htn,dm,cad,appet,pe,ane]).reshape(1,24)))
+    prediction=model.predict(input_query)[0]
     print(prediction)
 
     return jsonify({'placement': str(prediction)})
