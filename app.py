@@ -1,7 +1,6 @@
 from flask import Flask,request,jsonify
 import numpy as np
 import pickle
-import sklearn
 app=Flask(__name__)
 
 
