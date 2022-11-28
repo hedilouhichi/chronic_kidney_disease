@@ -5,13 +5,12 @@ import pickle
 app=Flask(__name__)
 
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def index():
     return "Hello world"
 model=pickle.load(open('RFC.pkl','rb'))
 
-@app.route('/predict',methods=['POST','GET'])
-@cross_origin()
+@app.route('/predict',methods=['POST'])
 def predict():
     age=request.form.get('age')
     bp=request.form.get('bp')
