@@ -1,5 +1,4 @@
 flask
 numpy
 sklearn
-sklearn-0.0.post1
 gunicorn

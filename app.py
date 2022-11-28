@@ -13,7 +13,7 @@ def index():
     return "Hello world"
 
 
-model = pickle.load(open('RFC.pkl', 'rb'))
+model = pickle.load(open('svc.pkl', 'rb'))
 
 
 @app.route('/predict', methods=['POST', 'GET'])
