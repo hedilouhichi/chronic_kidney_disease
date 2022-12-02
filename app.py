@@ -10,7 +10,7 @@ def index():
 
 model=pickle.load(open('RFC.pkl','rb'))
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
     age=request.form.get('age')
     bp=request.form.get('bp')
