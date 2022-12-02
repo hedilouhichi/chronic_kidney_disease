@@ -2,3 +2,4 @@ scikit-learn
 flask
 numpy
 gunicorn
+pip-22.3.1
