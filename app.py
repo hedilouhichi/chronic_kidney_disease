@@ -1,6 +1,8 @@
 from flask import Flask,request,jsonify
 import numpy as np
 import pickle
+model=pickle.load(open('RFC.pkl','rb'))
+
 app=Flask(__name__)
 
 @app.route('/')
@@ -8,7 +10,6 @@ def index():
     return "Hello world"
 
 
-model=pickle.load(open('RFC.pkl','rb'))
 
 @app.route('/predict',methods=['POST'])
 
