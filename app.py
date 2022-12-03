@@ -3,7 +3,6 @@ import numpy as np
 import pickle
 app=Flask(__name__)
 
-model=pickle.load(open('RFC.pkl','rb'))
 @app.route('/')
 def index():
     return "Hello world"
@@ -11,6 +10,8 @@ def index():
 
 
 @app.route('/predict',methods=['POST'])
+model=pickle.load(open('RFC.pkl','rb'))
+
 def predict():
     age=request.form.get('age')
     bp=request.form.get('bp')
